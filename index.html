@@ -5,86 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ayush Rajesh Jhaveri</title>
   <meta name="description" content="MSCS @ NYU Courant (AI). Researching evaluation & robustness of LLMs; Summer '25 AI Engineer @ BCG X.">
+  <meta name="color-scheme" content="dark light">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --max: 900px; }
-    html, body { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: #111; background: #fff; }
-    a { color: inherit; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 24px; }
-    header { position: sticky; top: 0; backdrop-filter: blur(6px); background: rgba(255,255,255,.7); border-bottom: 1px solid #eee; }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 24px; max-width: var(--max); margin: 0 auto; }
-    .nav a { text-decoration: none; padding: 6px 10px; border-radius: 10px; }
-    .nav a:hover { background: #f2f2f2; }
-    h1 { font-size: 28px; margin: 0 0 8px; }
-    .tagline { color: #444; margin: 0 0 16px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #e6e6e6; border-radius: 999px; box-shadow: 0 1px 2px rgba(0,0,0,.05); text-decoration: none; }
-    .chip:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-    section { padding: 8px 0 24px; }
-    h2 { font-size: 18px; margin: 18px 0 10px; }
-    .card { border: 1px solid #eee; border-radius: 16px; padding: 14px 16px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
-    .grid { display: grid; gap: 12px; }
-    .two { grid-template-columns: 1fr; }
-    @media (min-width: 760px) { .two { grid-template-columns: 1fr 1fr; } }
-    .row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .muted { color: #666; font-size: 14px; }
-    ul { margin: 8px 0 0 20px; }
-    footer { border-top: 1px solid #eee; padding: 18px 0; color: #666; font-size: 14px; }
+    :root{
+      --max:980px; --gap:20px;
+      --bg:#0b0e11;          /* page background */
+      --panel:#111418;       /* cards/nav */
+      --panel-2:#0f1216;     /* header backdrop */
+      --text:#e5e7eb;        /* primary text */
+      --muted:#9aa4af;       /* secondary text */
+      --border:#26303a;      /* subtle borders */
+      --chip:#1b2530;        /* chip bg */
+      --chip-border:#2b3641; /* chip border */
+      --shadow:0 8px 24px rgba(0,0,0,.45);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+      --link:#9ecbff;        /* link color */
+      --link-hover:#c7e2ff;  /* link hover */
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#fff; --panel:#ffffff; --panel-2:rgba(255,255,255,.75); --text:#111; --muted:#666; --border:#eee; --chip:#fff; --chip-border:#e6e6e6; --shadow:0 8px 24px rgba(0,0,0,.08); --shadow-sm:0 1px 2px rgba(0,0,0,.05); --link:#0a7cff; --link-hover:#1a88ff; }
+    }
+    html,body{ margin:0; padding:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text); background:var(--bg); }
+    a{ color:var(--link); text-decoration:underline; text-underline-offset:2px; }
+    a:hover{ color:var(--link-hover); }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; }
+    header{ position:sticky; top:0; backdrop-filter:blur(8px); background:var(--panel-2); border-bottom:1px solid var(--border); }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 24px; max-width:var(--max); margin:0 auto; }
+    .nav a{ text-decoration:none; color:var(--text); padding:6px 10px; border-radius:10px; }
+    .nav a:hover{ background:rgba(255,255,255,.06); }
+    h1{ font-size:28px; margin:0 0 8px; }
+    h2{ font-size:18px; margin:18px 0 10px; }
+    .tagline{ color:var(--muted); margin:0 0 16px; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+    .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; background:var(--chip); border:1px solid var(--chip-border); border-radius:999px; box-shadow:var(--shadow-sm); text-decoration:none; color:var(--text); }
+    .chip:hover{ box-shadow:0 2px 10px rgba(0,0,0,.35); }
+    section{ padding:8px 0 24px; }
+    .card{ background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px 16px; box-shadow:var(--shadow); }
+    .grid{ display:grid; gap:12px; }
+    .row{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+    .muted{ color:var(--muted); font-size:14px; }
+    ul{ margin:8px 0 0 20px; }
+    footer{ border-top:1px solid var(--border); padding:18px 0; color:var(--muted); font-size:14px; }
+
+    /* Hero split layout */
+    .hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:var(--gap); align-items:center; }
+    .photo{ width:100%; max-width:320px; justify-self:end; border-radius:18px; box-shadow:var(--shadow); border:1px solid var(--border); background:#0a0d11; }
+    @media (max-width:800px){ .hero{ grid-template-columns:1fr; } .photo{ justify-self:start; max-width:220px; } }
   </style>
 </head>
 <body>
   <header>
     <nav class="nav">
-      <a href="#top" style="font-weight:600;">Ayush Rajesh Jhaveri</a>
+      <a href="#top" style="font-weight:600; text-decoration:none;">Ayush Rajesh Jhaveri</a>
       <div>
-        <a href="#research">Research</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
+        <a href="#about">About</a>
         <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
       </div>
     </nav>
   </header>
 
   <main id="top" class="wrap">
-    <h1>Ayush Rajesh Jhaveri</h1>
-    <p class="tagline">MSCS @ NYU Courant (AI). Researching evaluation & robustness of LLMs; previously SDE at Amazon; Summer ’25 AI Engineer @ BCG X.</p>
+    <!-- Hero with split text + photo -->
+    <section id="about" class="hero" style="padding-top:16px;">
+      <div>
+        <h1>Ayush Rajesh Jhaveri</h1>
+        <p class="tagline">MSCS @ NYU Courant (AI). Researching evaluation & robustness of LLMs; previously SDE at Amazon; Summer ’25 AI Engineer @ BCG X.</p>
+        <div class="chips">
+          <a class="chip" href="mailto:aj4332@nyu.edu">aj4332@nyu.edu</a>
+          <a class="chip" href="https://www.linkedin.com/in/ayushjhaveri/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://github.com/ayushjhaveri" target="_blank" rel="noopener">GitHub</a>
+          <a class="chip" href="https://scholar.google.com/citations?user=l1LOVTMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        </div>
+        <p style="max-width:62ch; line-height:1.6; color:var(--text);">I’m a second‑year MSCS student at NYU Courant focused on NLP and reliable LLMs. I’m starting my master’s thesis with <a href="https://eunsol.github.io/" target="_blank" rel="noopener">Prof. Eunsol Choi</a>, and recently interned as an AI Engineer at <strong>BCG X</strong>. Previously, I was an SDE at <strong>Amazon</strong> working on vision‑enabled self‑checkout devices. I enjoy building practical evaluation tools and studying how training signals (e.g., perplexity) relate to downstream emergence.</p>
+      </div>
+      <!-- Use your uploaded headshot: name it Profile.png in the repo root -->
+      <img class="photo" src="Profile.png" alt="Ayush Jhaveri headshot" />
+    </section>
 
-    <div class="chips">
-      <a class="chip" href="mailto:aj4332@nyu.edu">aj4332@nyu.edu</a>
-      <a class="chip" href="https://www.linkedin.com/in/ayushjhaveri/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="chip" href="https://github.com/ayushjhaveri" target="_blank" rel="noopener">GitHub</a>
-      <a class="chip" href="https://scholar.google.com/citations?user=l1LOVTMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-    </div>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="row"><strong>Mitigating Unwanted Uncertainty in LLMs</strong><div class="muted">Jan 2025 – Present</div></div>
+          <p>Identify attention patterns under induced uncertainty and calibrate them to reduce sycophancy in instruction‑following models.</p>
+        </div>
+        <div class="card">
+          <div class="row"><strong>Is Perplexity All You Need?</strong><div class="muted">Jan 2025 – Present</div></div>
+          <p>Studying whether pretraining perplexity can predict downstream performance across model/data/scale; building simple plots &amp; evaluators for quick diagnostics.</p>
+        </div>
+        <div class="card">
+          <div class="row"><strong>LLM Evaluation in Mathematical Reasoning (MAPLE)</strong><div class="muted">Aug 2024 – Dec 2024</div></div>
+          <p>Evaluate multiple LLMs on MATH; cluster self‑reflection traces to label error types; propose MAPLE score via LLM‑as‑a‑judge.</p>
+        </div>
+        <div class="card">
+          <div class="row"><strong>Publication</strong><div class="muted">2022</div></div>
+          <p>Ayush Jhaveri, K. S. Sangwan, Vinod Maan, Dhiraj. <em>Deep learning‑based mosquito species detection using wingbeat frequencies</em>. <span class="muted">Intelligent Data Engineering and Analytics, Springer Nature, pp. 71–80.</span> <a href="https://doi.org/10.1007/978-981-16-6624-7_8" target="_blank" rel="noopener">Publisher link</a></p>
+        </div>
+      </div>
+    </section>
 
-    <section>
+    <section id="education">
       <h2>Education</h2>
       <div class="grid">
         <div class="card">
           <div class="row"><div><strong>New York University, Courant Institute</strong><div class="muted">M.S. Computer Science (AI)</div></div><div class="muted">Sep 2024 – May 2026</div></div>
           <ul>
-            <li>Courses: NLP, Emerging Topics in NLP, Deep Decision Making & RL</li>
+            <li>Courses: NLP, Emerging Topics in NLP, Deep Decision Making &amp; RL</li>
           </ul>
         </div>
         <div class="card">
           <div class="row"><div><strong>BITS Pilani</strong><div class="muted">B.E. Computer Science; Minor in Data Science</div></div><div class="muted">Aug 2017 – Jun 2021</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="research">
-      <h2>Research</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="row"><strong>Is Perplexity All You Need?</strong><div class="muted">Jan 2025 – Present</div></div>
-          <div class="muted">Research Assistant, CILVR (advised by He He & Kyunghyun Cho)</div>
-          <p>Studying whether pretraining perplexity can predict downstream emergence; training and evaluating models across data/scale/arch to trace emergence curves.</p>
-        </div>
-        <div class="card">
-          <div class="row"><strong>Topological Neural Networks for Cross‑lingual Syntax</strong><div class="muted">Sep 2024 – Oct 2024</div></div>
-          <div class="muted">Research Assistant, CILVR (advised by Duygu Ataman)</div>
-          <p>Implemented TNNs in PyTorch; analyzed attention and syntax across English/Chinese/Arabic.</p>
         </div>
       </div>
     </section>
@@ -96,7 +131,7 @@
           <div class="row"><strong>AI Engineer</strong> — BCG X, AI Science Institute (NYC)<div class="muted">Jun 2025 – Aug 2025</div></div>
           <ul>
             <li>Prototyped LLM evaluation and alignment tooling for enterprise workflows.</li>
-            <li>Contributed to research deliverables on controllable reasoning and uncertainty mitigation.</li>
+            <li>Contributed research on controllable reasoning and uncertainty mitigation.</li>
           </ul>
         </div>
         <div class="card">
@@ -105,30 +140,6 @@
             <li>Built Windows .NET app for self‑checkout devices; integrated vision for product ID with &lt;500ms E2E latency.</li>
             <li>Automated device provisioning using AWS Step Functions/Lambda; ~40% faster setup times.</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="publications">
-      <h2>Publications</h2>
-      <div class="grid">
-        <div class="card">
-          <div>Ayush Jhaveri, K. S. Sangwan, Vinod Maan, Dhiraj (2022). <strong>Deep learning‑based mosquito species detection using wingbeat frequencies</strong>. <span class="muted">Intelligent Data Engineering and Analytics, Springer Nature, pp. 71–80.</span></div>
-          <div style="margin-top:6px;"><a href="https://doi.org/10.1007/978-981-16-6624-7_8" target="_blank" rel="noopener">Publisher link</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="row"><strong>Mitigating Unwanted Uncertainty in LLMs</strong><div class="muted">Jan 2025 – Present</div></div>
-          <p>Identify attention patterns under induced uncertainty and calibrate them to reduce sycophancy.</p>
-        </div>
-        <div class="card">
-          <div class="row"><strong>LLM Evaluation in Mathematical Reasoning (MAPLE)</strong><div class="muted">Aug 2024 – Dec 2024</div></div>
-          <p>Evaluate multiple LLMs on MATH; cluster self‑reflection traces to label error types; propose MAPLE score.</p>
         </div>
       </div>
     </section>
